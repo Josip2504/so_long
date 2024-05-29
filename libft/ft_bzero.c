@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/29 16:16:17 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/07 10:58:23 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/10 14:58:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../mlx/mlx.h"
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-#define size 100
-
-// maps
-typedef struct
+void	ft_bzero(void *s, size_t n)
 {
-	char	data[size][size];
-	int		rows;
-	int		cols;
-	int		player_row;
-	int		player_col;
-	int		exit_row;
-	int		exit_col;
-	int		num_collectibles;
-} Map;
+	unsigned char	*ch;
 
-char	*prase_map(const char *filename, Map* map);
-
-// export DYLD_LIBRARY_PATH=/Users/jsamardz/Desktop/so_long/mlx:$DYLD_LIBRARY_PATH
+	ch = s;
+	while (n > 0)
+	{
+		*ch = 0;
+		ch++;
+		n--;
+	}
+}

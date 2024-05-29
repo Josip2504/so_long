@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/29 16:16:17 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/12 15:16:56 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/12 15:22:19 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../mlx/mlx.h"
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-#define size 100
-
-// maps
-typedef struct
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	data[size][size];
-	int		rows;
-	int		cols;
-	int		player_row;
-	int		player_col;
-	int		exit_row;
-	int		exit_col;
-	int		num_collectibles;
-} Map;
+	size_t	i;
 
-char	*prase_map(const char *filename, Map* map);
-
-// export DYLD_LIBRARY_PATH=/Users/jsamardz/Desktop/so_long/mlx:$DYLD_LIBRARY_PATH
+	i = -1;
+	while (s[++i])
+		(*f)(i, &s[i]);
+}

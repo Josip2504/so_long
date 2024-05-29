@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/29 16:16:17 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/07 10:31:20 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/10 14:58:08 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../mlx/mlx.h"
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-#define size 100
-
-// maps
-typedef struct
+void	*ft_memset(void *b, int c, size_t len)
 {
-	char	data[size][size];
-	int		rows;
-	int		cols;
-	int		player_row;
-	int		player_col;
-	int		exit_row;
-	int		exit_col;
-	int		num_collectibles;
-} Map;
+	unsigned char	*ch;
 
-char	*prase_map(const char *filename, Map* map);
-
-// export DYLD_LIBRARY_PATH=/Users/jsamardz/Desktop/so_long/mlx:$DYLD_LIBRARY_PATH
+	ch = b;
+	while (len > 0)
+	{
+		*ch = c;
+		ch++;
+		len--;
+	}
+	return (b);
+}

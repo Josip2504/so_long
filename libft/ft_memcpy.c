@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/29 16:16:17 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/08 15:34:48 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/09 19:16:15 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../mlx/mlx.h"
-#include <stdio.h>
 #include <string.h>
 
-#define size 100
-
-// maps
-typedef struct
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	data[size][size];
-	int		rows;
-	int		cols;
-	int		player_row;
-	int		player_col;
-	int		exit_row;
-	int		exit_col;
-	int		num_collectibles;
-} Map;
+	char	*d;
+	char	*s;
 
-char	*prase_map(const char *filename, Map* map);
-
-// export DYLD_LIBRARY_PATH=/Users/jsamardz/Desktop/so_long/mlx:$DYLD_LIBRARY_PATH
+	d = (char *) dst;
+	s = (char *) src;
+	if (!dst && !src)
+		return (dst);
+	while (n--)
+		*d++ = *s++;
+	return (dst);
+}

@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/29 14:41:25 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:26:21 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int main()
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	const char	*filename = "map.ber";
+	Map map;
+	char *result;
+	
+	result = prase_map(filename, &map);
+	printf("%s\n", result);
 
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 800, 600, "Game");

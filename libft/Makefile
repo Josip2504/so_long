@@ -5,40 +5,35 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/29 11:47:19 by jsamardz          #+#    #+#              #
-#    Updated: 2024/05/29 16:22:16 by jsamardz         ###   ########.fr        #
+#    Created: 2024/03/08 14:39:19 by jsamardz          #+#    #+#              #
+#    Updated: 2024/05/27 12:46:00 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-SRC = $(addprefix src/, main.c ft_maps.c)
+SRC = ft_strlen.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
+ft_isprint.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strncmp.c ft_memset.c \
+ft_bzero.c ft_memmove.c ft_memchr.c ft_strrchr.c ft_memcpy.c ft_strlcpy.c \
+ft_strlcat.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
+ft_substr.c ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri.c \
+ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c
 OBJ = $(SRC:.c=.o)
-MLX_PATH = mlx
-MLX_LIB = -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
-LIBFT_PATH = libft
-LIFT_H = -L$(LIBFT_PATH)
-INCLUDES = -I$(MLX_PATH) -Iinclude -I$(LIBFT_PATH)
+NAME = libft.a
+
+all: ${NAME}
+
+${NAME}: ${OBJ}
+	@ar rcs ${NAME} ${OBJ} 
 
 %.o: %.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@cc -c $< -o $@ ${CFLAGS}
 
-$(NAME): $(OBJ)
-	@echo "make"
-	@make -C mlx
-	@$(CC) $(OBJ) $(MLX_LIB) -o $(NAME)
-	
 clean:
-	@echo "clean"
-	@rm -f $(OBJ)
+	@rm -f ${OBJ}
 
-fclean: clean
-	@echo "fclean"
-	@rm -f $(NAME)
+fclean:
+	@rm -f ${NAME}
+	@rm -f ${OBJ}
 
 re: fclean all
-
-all: $(NAME)
-
 .PHONY: all clean fclean re

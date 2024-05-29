@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/29 16:16:17 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/12 15:36:06 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/12 15:40:23 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../mlx/mlx.h"
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-#define size 100
-
-// maps
-typedef struct
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	data[size][size];
-	int		rows;
-	int		cols;
-	int		player_row;
-	int		player_col;
-	int		exit_row;
-	int		exit_col;
-	int		num_collectibles;
-} Map;
+	int	i;
 
-char	*prase_map(const char *filename, Map* map);
-
-// export DYLD_LIBRARY_PATH=/Users/jsamardz/Desktop/so_long/mlx:$DYLD_LIBRARY_PATH
+	i = -1;
+	while (s[++i])
+		write(fd, &s[i], 1);
+	i++;
+	write(fd, "\n", 1);
+}
