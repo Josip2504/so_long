@@ -6,11 +6,11 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:08:46 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/08 21:15:37 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:14:05 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

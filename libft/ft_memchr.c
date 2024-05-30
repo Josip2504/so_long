@@ -6,11 +6,11 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:41:02 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/08 11:02:47 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:13:48 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

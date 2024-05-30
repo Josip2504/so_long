@@ -6,41 +6,31 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/29 16:26:21 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:14:48 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-#define KEY_ESC 53
-
-int close_win()
+int	main(int ac, char **av)
 {
-	exit (0);
-}
+	t_data	*data;
 
-int keypress(int keycode)
-{
-	if (keycode == KEY_ESC)
-		exit(0);
+	if (ac != 2)
+		return (ft_error("Error\nInvalid arguments"));
+	if (!ft_input(av[1]))
+		return (ft_error("Error\nArgument must be .ber file"));
+	ft_bzero(&data, sizeof(t_data));
+	data->map = malloc(sizeof(t_map));
+	if (data->map == NULL)
+		ft_error("Error\nMemory allocation");
+	init_map(data->map);
+	read_map(&data, av[1]);
 	return (0);
 }
 
-int main()
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	const char	*filename = "map.ber";
-	Map map;
-	char *result;
-	
-	result = prase_map(filename, &map);
-	printf("%s\n", result);
-
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 800, 600, "Game");
-	mlx_hook(win_ptr, 2, 0, keypress, NULL);
-	mlx_hook(win_ptr, 17, 0, close_win, NULL);
-	mlx_loop(mlx_ptr);
-	return 0;
-}
+// mlx_ptr = mlx_init();
+// win_ptr = mlx_new_window(mlx_ptr, 800, 600, "Game");
+// mlx_hook(win_ptr, 2, 0, keypress, NULL);
+// mlx_hook(win_ptr, 17, 0, close_win, NULL);
+// mlx_loop(mlx_ptr);

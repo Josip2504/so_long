@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 08:58:05 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/14 10:36:24 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:33:56 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <stdarg.h>
+# include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 size_t	ft_strlen(const char *s);
 int		ft_isalpha(int c);
@@ -51,5 +58,18 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+char	*ft_buffer(char *buff, char *line);
+char	*ft_next(int fd, char *buff);
+char	*ft_new(int fd, char *stat);
+char	*get_next_line(int fd);
+
+int		ft_printf(const char *format, ...);
+int		print_format(char spec, va_list ap);
+int		print_char(int c);
+int		print_str(char *str);
+int		print_digit(long n, int base);
+int		print_x(long n, int base);
+int		print_ptr(unsigned long ptr, int base);
 
 #endif

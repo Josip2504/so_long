@@ -6,88 +6,68 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:16:37 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/29 16:35:18 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:15:20 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	*prase_map(const char *filename, Map* map)
+static void	get_row_num(t_data *data, char *file)
 {
-	char	line[size];
-	int		len;
-	FILE	*file = fopen(filename, "r");
+	int		fd;
+	char	*line;
 
-	if (!file)
+	line = NULL;
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		ft_error("Error\nOpening file");
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		return "failed to open file";
+		data->map->rows += 1;
+		free(line);
+		line = get_next_line(fd);
 	}
-	// map properties
-	map->rows = 0;
-	map->cols = 0;
-	map->player_col = -1;
-	map->player_row = -1;
-	map->exit_col = -1;
-	map->exit_row = -1;
-	map->num_collectibles = 0;
-	while (fgets(line, sizeof(line), file))		//fgets
+	close(fd);
+}
+
+static void	parse_map(const char *file, t_data *data)
+{
+	int		rows;
+	int		fd;
+	char	*line;
+
+	line = NULL;
+	rows = data->map->rows;
+	data->map->field = (char **)malloc(sizeof(char *) * (rows + 1));
+	if (!data->map->field)
+		ft_error("Error\nMemory allocation");
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		ft_error("Error\nOpening file");
+	rows = 0;
+	while (line != NULL)
 	{
-		line[strcspn(line, "\n")] = '\0';		//strcspn
-		len = strlen(line);						//strlen
-		if (map->cols == 0 )
-			map->cols = len;
-		else if (len != map->cols)
-		{
-			fclose(file);
-			return "map not rectengular";
-		}
-		strcpy(map->data[map->rows], line);		//strcpy
-		map->rows++;
-
-		// proces char in line
-		int j = 0;
-		while (j < len)
-		{
-			char ch = line[j];
-			if (ch == 'P')
-			{
-				if (map->player_row != -1 || map->player_col != -1)
-				{
-					fclose(file);
-					return "dublicate player start pos";
-				}
-				map->player_row = map->rows -1;
-				map->player_col = j;
-			}
-			else if (ch == 'E')
-			{
-				if (map->exit_row != -1 || map->exit_col != -1)
-				{
-					fclose(file);
-					return "dublicate exit pos";
-				}
-				map->player_row = map->rows -1;
-				map->player_col = j;
-			}
-			else if (ch == 'C')
-				map->num_collectibles++;
-			else if (ch != '0' && ch != '1')
-			{
-				fclose(file);
-				return "invalid char in map";
-			}
-			j++;
-		}
+		line = get_next_line(fd);
+		data->map->field[rows] = ft_strdup(line);
+		rows++;
+		free(line);
+		line = NULL;
 	}
-	fclose(file);
+	data->map->field[rows] = 0;
+	close(fd);
+}
 
-	// check required elements
-	if (map->player_row == -1 || map->player_col == -1)
-		return "player not foud";
-	if (map->exit_row == -1 || map->exit_col == -1)
-		return "exit not foud";
-	if (map->player_row == 0)
-		return "collectible not foud";
-	
-	return ("map prased succesfully");
+int	read_map(t_data *data, char *file)
+{
+	int	check;
+
+	get_row_num(data, file);
+	if (data->map->rows == 0)
+		ft_error("Error\nNo map");
+	parse_map(file, data);
+	check = check_map(data);
+	if (check > 0)
+		ft_error("Error\nInvalid map");
+	return (0);
 }

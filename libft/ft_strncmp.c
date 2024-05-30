@@ -6,11 +6,11 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 20:10:02 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/08 21:47:33 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:14:44 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

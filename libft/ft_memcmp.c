@@ -6,11 +6,11 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:54:50 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/09 19:03:35 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:13:52 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
