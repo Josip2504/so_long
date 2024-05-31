@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:16:37 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 22:15:20 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/31 16:09:12 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ static void	get_row_num(t_data *data, char *file)
 
 	line = NULL;
 	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		ft_error("Error\nOpening file");
-	line = get_next_line(fd);
-	while (line != NULL)
+	if (fd < 0)
+		ft_error("Error\nOpenning file");
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
 		data->map->rows += 1;
 		free(line);
-		line = get_next_line(fd);
+		line = NULL;
 	}
 	close(fd);
 }
@@ -43,10 +45,10 @@ static void	parse_map(const char *file, t_data *data)
 	if (!data->map->field)
 		ft_error("Error\nMemory allocation");
 	fd = open(file, O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		ft_error("Error\nOpening file");
 	rows = 0;
-	while (line != NULL)
+	while (1)
 	{
 		line = get_next_line(fd);
 		data->map->field[rows] = ft_strdup(line);
@@ -63,6 +65,7 @@ int	read_map(t_data *data, char *file)
 	int	check;
 
 	get_row_num(data, file);
+	ft_printf("rows = %d\n", data->map->rows);
 	if (data->map->rows == 0)
 		ft_error("Error\nNo map");
 	parse_map(file, data);

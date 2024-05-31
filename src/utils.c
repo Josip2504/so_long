@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extras.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:41:24 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 20:55:42 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:44:28 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-int	ft_error(char *str)
-{
-	ft_printf("%s\n", str);
-	return (0);
-}
 
 int	close_win(void)
 {
@@ -46,15 +40,16 @@ int	ft_input(const char *name)
 	return (res);
 }
 
-// void	free_map(t_map *map)
-// {
-// 	int	i;
+void	ft_free_map(t_data *data)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (i < map->rows)
-// 	{
-// 		free(map->data[i]);
-// 		i++;
-// 	}
-// 	free(map->data);
-// }
+	i = 0;
+	while (i < data->map->rows)
+	{
+		free(data->map->field[i]);
+		i++;
+	}
+	free(data->map->field);
+	data->map->field = NULL;
+}

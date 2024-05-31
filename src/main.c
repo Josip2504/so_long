@@ -6,28 +6,59 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 22:14:48 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/31 16:55:07 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+// int main() {
+//     // Assume you have a file named "test.txt" in the current directory
+//     FILE *file = fopen("map.ber", "r");
+//     if (!file) {
+//         perror("Error opening file");
+//         return 1;
+//     }
+
+//     char *line;
+//     int line_number = 1;
+
+//     // Read lines from the file using get_next_line
+//     while ((line = ft_get_nl(fileno(file))) != NULL) {
+//         printf("Line %d: %s\n", line_number, line);
+//         free(line);  // Free the memory allocated by get_next_line
+//         line_number++;
+//     }
+
+//     fclose(file);
+//     return 0;
+// }
 
 int	main(int ac, char **av)
 {
 	t_data	*data;
 
 	if (ac != 2)
-		return (ft_error("Error\nInvalid arguments"));
+		ft_error("Error\nInvalid arguments");
 	if (!ft_input(av[1]))
-		return (ft_error("Error\nArgument must be .ber file"));
-	ft_bzero(&data, sizeof(t_data));
-	data->map = malloc(sizeof(t_map));
-	if (data->map == NULL)
+		ft_error("Error\nArgument must be .ber file");
+	data = (t_data *)malloc(sizeof(t_data));
+	if (data == NULL)
 		ft_error("Error\nMemory allocation");
+	ft_bzero(data, sizeof(t_data));
+	data->map = (t_map *)malloc(sizeof(t_map));
+	if (data->map == NULL)
+	{
+		free(data);
+		ft_error("Error\nMemory allocation");
+	}
 	init_map(data->map);
-	read_map(&data, av[1]);
+	read_map(data, av[1]); 				//seg fault
+	free(data->map);
+	free(data);
 	return (0);
 }
+
 
 // mlx_ptr = mlx_init();
 // win_ptr = mlx_new_window(mlx_ptr, 800, 600, "Game");

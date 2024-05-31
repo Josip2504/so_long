@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 22:15:25 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/31 16:41:22 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # define MAX_MAP_SIZE 100
 # define KEY_ESC 53
+# define MAX_LINE_LEN 256
+# define CHARS "PEC10"
 
 typedef struct s_map
 {
@@ -43,13 +45,24 @@ typedef struct s_data
 	t_map	*map;
 }	t_data;
 
+// ft_get_nl
+char	*ft_get_nl(int fd);
+
+// ft_errors
+void	ft_error(char *str);
+void	ft_error_msg(int x, t_data *data);
+void	ft_free_error(const char *s, t_data *data);
+
+// check_walls
+int		check_walls(t_data *data, int *row, int *col, int len);
+
 // check_map
-int	check_map(t_data *data);
+int		check_map(t_data *data);
+size_t	ft_nl(char *s);
 
 // utils
-int		ft_error(char *str);
 int		ft_input(const char *name);
-void	free_map(t_map *map);
+void	ft_free_map(t_data *data);
 int		keypress(int keycode);
 int		close_win(void);
 

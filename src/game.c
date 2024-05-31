@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 19:40:17 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 19:43:42 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:19:46 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_map(t_map *map)
 {
+	map->field = NULL;
 	map->rows = 0;
 	map->cols = 0;
 	map->exit_col = 0;
