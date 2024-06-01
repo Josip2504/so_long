@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 08:58:05 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/31 16:55:18 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:18:45 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
+#  define BUFFER_SIZE 1024
 # endif
 
 size_t	ft_strlen(const char *s);

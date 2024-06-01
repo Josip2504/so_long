@@ -6,33 +6,11 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/31 16:55:07 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/01 20:11:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-// int main() {
-//     // Assume you have a file named "test.txt" in the current directory
-//     FILE *file = fopen("map.ber", "r");
-//     if (!file) {
-//         perror("Error opening file");
-//         return 1;
-//     }
-
-//     char *line;
-//     int line_number = 1;
-
-//     // Read lines from the file using get_next_line
-//     while ((line = ft_get_nl(fileno(file))) != NULL) {
-//         printf("Line %d: %s\n", line_number, line);
-//         free(line);  // Free the memory allocated by get_next_line
-//         line_number++;
-//     }
-
-//     fclose(file);
-//     return 0;
-// }
 
 int	main(int ac, char **av)
 {
@@ -53,7 +31,7 @@ int	main(int ac, char **av)
 		ft_error("Error\nMemory allocation");
 	}
 	init_map(data->map);
-	read_map(data, av[1]); 				//seg fault
+	read_map(data, av[1]);
 	free(data->map);
 	free(data);
 	return (0);

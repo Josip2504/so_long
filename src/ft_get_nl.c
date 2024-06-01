@@ -6,35 +6,34 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:39:41 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/31 16:55:10 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/01 17:24:13 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	*ft_get_nl(int fd)
+int	get_nl(int fd)
 {
-	static char buf[BUFFER_SIZE + 1];
-    char *line = NULL;
-    char *tmp;
-    int ret;
-    int i;
+	int		i;
+	int		p;
+	char	c;
+	ssize_t	b_read;
 
-    line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-    if (line == NULL)
-        return (NULL);
-    tmp = line;
-    while ((ret = read(fd, buf, BUFFER_SIZE)) > 0) {
-        buf[ret] = '\0';
-        for (i = 0; buf[i] != '\0' && buf[i] != '\n'; i++)
-            *tmp++ = buf[i];
-        if (buf[i] == '\n') {
-            *tmp = '\0';
-            return (line);
-        }
-    }
-    if (ret == 0 && tmp != line)
-        return (line);
-    free(line);
-    return (NULL);
+	i = 1;
+	p = '\0';
+	if (read(fd, &c, 1) > 0 && c != '1')
+		ft_error("Error\nInvalid map");
+	while ((b_read = read(fd, &c, 1)) > 0)
+	{
+		if (c == '\n')
+		{
+			if (p == '\n')
+				ft_error("Error\nInvalid map");
+			i++;
+		}
+		p = c;
+	}
+	if (p != '1')
+		ft_error("Error\nInvalid map");
+	return (i);
 }
