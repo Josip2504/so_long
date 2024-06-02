@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 08:58:05 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/01 14:18:45 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:34:41 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 1
 # endif
 
 size_t	ft_strlen(const char *s);
@@ -48,7 +48,7 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
@@ -59,10 +59,15 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-char	*ft_buffer(char *buff, char *line);
-char	*ft_next(int fd, char *buff);
-char	*ft_new(int fd, char *stat);
 char	*get_next_line(int fd);
+char	*ft_output_g(char **nl, int pos, int b);
+char	*ft_up(char **nl, int pos);
+void	*ft_calloc_g(size_t a, size_t b);
+char	*ft_strndup_g(char *in, int n);
+char	*ft_strnjoin_g(char *s1, char *s2, int n);
+int		ft_strchr_g(char *s, int c, int f);
+void	ft_free_g(char **p);
+int		ft_strlen_g(char *s);
 
 int		ft_printf(const char *format, ...);
 int		print_format(char spec, va_list ap);

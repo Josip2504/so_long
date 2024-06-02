@@ -6,40 +6,30 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/01 20:11:24 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/02 19:47:22 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+void	init_map(t_data *data, t_map *map)
+{
+	data->map = map;
+}
+
 int	main(int ac, char **av)
 {
-	t_data	*data;
+	t_data	data;
+	t_map	map;
 
 	if (ac != 2)
 		ft_error("Error\nInvalid arguments");
-	if (!ft_input(av[1]))
-		ft_error("Error\nArgument must be .ber file");
-	data = (t_data *)malloc(sizeof(t_data));
-	if (data == NULL)
+	map_size(&data, av);
+	init_map(&data, &map);
+	data.map->map = (char **)malloc(sizeof(char *) * (data.map->y + 1));
+	if (!data.map->map)
 		ft_error("Error\nMemory allocation");
-	ft_bzero(data, sizeof(t_data));
-	data->map = (t_map *)malloc(sizeof(t_map));
-	if (data->map == NULL)
-	{
-		free(data);
-		ft_error("Error\nMemory allocation");
-	}
-	init_map(data->map);
-	read_map(data, av[1]);
-	free(data->map);
-	free(data);
+	parse_map(&data, av);
+	printf("paresed");
 	return (0);
 }
-
-
-// mlx_ptr = mlx_init();
-// win_ptr = mlx_new_window(mlx_ptr, 800, 600, "Game");
-// mlx_hook(win_ptr, 2, 0, keypress, NULL);
-// mlx_hook(win_ptr, 17, 0, close_win, NULL);
-// mlx_loop(mlx_ptr);

@@ -6,27 +6,34 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 17:29:41 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/10 17:43:52 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/02 20:06:47 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
-	char	*result;
-	size_t	s1len;
-	size_t	s2len;
+	char	*res;
+	int		i;
+	int		j;
 
-	if (!s1 || !s2)
+	i = 0;
+	j = 0;
+	if (!s2)
 		return (NULL);
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
-	result = (char *)malloc((s1len + s2len + 1) * sizeof(char));
-	if (!result)
+	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (res == NULL)
 		return (NULL);
-	ft_memcpy(result, s1, s1len);
-	ft_memcpy(result + s1len, s2, s2len);
-	result[s1len + s2len] = '\0';
-	return (result);
+	while (s1 && s1[i] != '\0')
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+		res[i++] = s2[j++];
+	res[i] = '\0';
+	free(s1);
+	s1 = NULL;
+	return (res);
 }

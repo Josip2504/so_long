@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   ft_input.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 19:40:17 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/01 19:36:37 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/05/30 18:41:24 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/06/02 13:33:40 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	init_map(t_map *map)
+int	ft_input(const char *name)
 {
-	map->field = NULL;
-	map->rows = 0;
-	map->cols = 0;
-	map->exit_col = 0;
-	map->exit_row = 0;
-	map->num_collectibles = 0;
-	map->player_col = 0;
-	map->player_row = 0;
-}
-void	get_row_num(t_data *data, char *file)
-{
-	int	fd;
-	int	line;
+	const char	*end;
+	size_t		len_name;
+	size_t		len_end;
+	size_t		res;
 
-	line = 0;
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		ft_error("Error\nOpenning file");
-	line = get_nl(fd);
-	data->map->rows = line;
-	close(fd);
+	end = ".ber";
+	len_name = ft_strlen(name);
+	len_end = ft_strlen(end);
+	if (len_name < len_end)
+		return (0);
+	res = ft_strncmp(name + len_name - len_end, end, 4) == 0;
+	return (res);
 }

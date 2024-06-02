@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 14:39:19 by jsamardz          #+#    #+#              #
-#    Updated: 2024/05/30 21:38:54 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/06/02 16:32:54 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,25 +19,22 @@ ft_strlcat.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
 ft_substr.c ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c \
 ft_printf.c print_format.c print_char.c print_str.c print_digit.c print_x.c \
-print_ptr.c get_next_line.c
+print_ptr.c get_next_line.c get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
 NAME = libft.a
 
 all: ${NAME}
 
 $(NAME): $(OBJ)
-	@echo "make"
 	@ar rcs $(NAME) $(OBJ)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "clean"
 	@rm -f ${OBJ}
 
 fclean:
-	@echo "fclean"
 	@rm -f ${NAME}
 	@rm -f ${OBJ}
 

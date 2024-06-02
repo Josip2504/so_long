@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/01 19:37:20 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/02 20:04:53 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,56 +20,42 @@
 # include <string.h>
 # include <fcntl.h>
 
-# define KEY_ESC 53
-# define CHARS "PEC10"
-# define BUFF_SIZE 4096
+# define IMAGE_X 32
+# define IMAGE_Y 32
 
 typedef struct s_map
 {
-	char	**field;
-	int		rows;
-	int		cols;
-	int		player_row;
-	int		player_col;
-	int		exit_row;
-	int		exit_col;
-	int		num_collectibles;
+	char	**map;
+	int		x;
+	int		y;
+	int		collectible;
+	void	*player;
 }	t_map;
 
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*mlx_img;
+	void	*mlx;
+	void	*win;
+	int		x;
+	int		y;
+	int		player_x;
+	int		player_y;
+	int		moves;
+	int		collected;
 	t_map	*map;
 }	t_data;
 
-// ft_get_nl
-int		get_nl(int fd);
-
-// ft_errors
-void	ft_error(char *str);
-void	ft_error_msg(int x, t_data *data);
-void	ft_free_error(const char *s, t_data *data);
-
-// check_walls
-int		check_walls(t_data *data, int *row, int *col, int len);
-
-// check_map
-int		check_map(t_data *data);
-size_t	ft_nl(char *s);
-
-// utils
+// input
 int		ft_input(const char *name);
-void	ft_free_map(t_data *data);
-int		keypress(int keycode);
-int		close_win(void);
 
-// game
-void	init_map(t_map *map);
-void	get_row_num(t_data *data, char *file);
+// map_size
+void	map_size(t_data *data, char **av);
 
-// ft_maps
-int		read_map(t_data *data, char *file);
+// error
+void	ft_error(char *str);
+
+// parse_map
+void	parse_map(t_data *data, char **av);
+void	rec_check(t_data *data);
 
 #endif
