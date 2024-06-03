@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/03 15:23:16 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/06/03 12:06:28 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/06/03 13:41:13 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	init_map(t_data *data, t_map *map)
+void	free_array(char **s)
 {
-	data->map = map;
-	map->map = NULL;
-}
+	int	i;
 
-int	main(int ac, char **av)
-{
-	t_data	data;
-	t_map	map;
-
-	if (ac != 2)
-		ft_error("Error\nInvalid arguments");
-	map_size(&data, av);
-	init_map(&data, &map);
-	data.map->map = (char **)malloc(sizeof(char *) * (data.map->y + 1));
-	if (!data.map->map)
-		ft_error("Error\nMemory allocation");
-	parse_map(&data, av);
-	printf("good map");
-	return (0);
+	i = 0;
+	while (s[i])
+		free(s[i++]);
+	free(s);
 }

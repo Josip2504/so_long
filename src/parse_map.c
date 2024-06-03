@@ -6,28 +6,11 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 17:06:25 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/02 20:06:04 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/03 11:06:41 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-static int	counter(char *str, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	if (!str)
-		return (-1);
-	while (str && str[i])
-	{
-		if (str[i++] == c)
-			count++;
-	}
-	return (count);
-}
 
 static void	map_check(t_data *data)
 {
@@ -55,7 +38,7 @@ static void	map_check(t_data *data)
 		ft_error("Error\nMap has to contain at least one collectible");
 }
 
-static void	wall_check(t_data *data)
+void	wall_check(t_data *data)
 {
 	int	x;
 	int	y;

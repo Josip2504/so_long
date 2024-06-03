@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/02 20:04:53 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:23:22 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 # define IMAGE_X 32
 # define IMAGE_Y 32
 
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
+
 typedef struct s_map
 {
 	char	**map;
@@ -30,6 +36,8 @@ typedef struct s_map
 	int		y;
 	int		collectible;
 	void	*player;
+	t_pos	start;
+	t_pos	end;
 }	t_map;
 
 typedef struct s_data
@@ -43,7 +51,14 @@ typedef struct s_data
 	int		moves;
 	int		collected;
 	t_map	*map;
+	t_pos	current;
 }	t_data;
+
+// utils
+void	free_array(char **s);
+
+// map_path
+
 
 // input
 int		ft_input(const char *name);
@@ -53,6 +68,7 @@ void	map_size(t_data *data, char **av);
 
 // error
 void	ft_error(char *str);
+int		counter(char *str, char c);
 
 // parse_map
 void	parse_map(t_data *data, char **av);

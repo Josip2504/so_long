@@ -6,14 +6,14 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 11:47:19 by jsamardz          #+#    #+#              #
-#    Updated: 2024/06/02 17:07:33 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/06/03 14:02:58 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = gcc
-CFLAGS = 
-SRC = $(addprefix src/, main.c map_size.c input.c error.c parse_map.c)
+CFLAGS = -Wall -Werror -Wextra -g
+SRC = $(addprefix src/, main.c map_size.c input.c error.c parse_map.c map_path.c utils.c)
 OBJ = $(SRC:.c=.o)
 MLX_PATH = mlx
 MLX_LIB = -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
