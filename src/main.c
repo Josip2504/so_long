@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/03 15:23:16 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/03 22:55:37 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int ac, char **av)
 	if (!data.map->map)
 		ft_error("Error\nMemory allocation");
 	parse_map(&data, av);
+	map_path(&data);
 	printf("good map");
 	return (0);
 }
