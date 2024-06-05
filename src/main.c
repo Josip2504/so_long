@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 20:31:41 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:59:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int	main(int ac, char **av)
 		ft_error("Error\nMemory allocation");
 	parse_map(&data, av);
 	map_path(&data);
+	map.map = ft_calloc(data.y + 1, sizeof(char *));
+	if (!map.map)
+		ft_error("Error\nMemory allocation");
 	parse_map(&data, av);
 	data.mlx = mlx_init();
 	if (!data.mlx)

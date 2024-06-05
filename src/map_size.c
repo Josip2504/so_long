@@ -6,13 +6,13 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:39:18 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/04 23:15:36 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:43:10 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	lenght(int fd)
+static int	lenght(int fd)
 {
 	char	buff[1];
 	int		len;
@@ -32,7 +32,7 @@ int	lenght(int fd)
 	return (len);
 }
 
-int	lines(int fd, int x, int img)
+static int	lines(int fd, int x, int img)
 {
 	char	*line;
 	int		lc;

@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 20:09:02 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:45:28 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 
 # define IMAGE_X 64
 # define IMAGE_Y 64
-
-// x je visina, y je duzina mape
 
 typedef struct s_img
 {
@@ -76,20 +74,19 @@ void	init_map(t_data *data, t_map *map);
 void	moves(t_data *data, char p, int dir);
 
 // render_game
+void	render_game(t_data *data);
 int		esc_game(t_data *data);
-int 	key_hook(int keycode, t_data *data);
+int		key_hook(int keycode, t_data *data);
 
 // load_img
 void	background(t_data *data);
 void	load_obj(t_data *data, char *path);
 void	load_player(t_data *data);
 
-// render_game
-void	render_game(t_data *data);
-
 // utils
-void	free_array(char **s);
 int		counter(char *str, char c);
+void	free_data(t_data *data);
+void	ft_error(char *str);
 
 // map_path
 void	map_path(t_data *data);
@@ -99,9 +96,6 @@ int		ft_input(const char *name);
 
 // map_size
 void	map_size(t_data *data, char **av);
-
-// error
-void	ft_error(char *str);
 
 // parse_map
 void	parse_map(t_data *data, char **av);

@@ -6,19 +6,19 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:59:31 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 01:00:22 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:53:56 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	game_over(void)
+static void	game_over(void)
 {
 	ft_printf("You won!");
 	exit(EXIT_SUCCESS);
 }
 
-void	load_map(t_data *data)
+static void	load_map(t_data *data)
 {
 	data->map->x = 0;
 	data->map->y = 0;
@@ -42,7 +42,7 @@ void	load_map(t_data *data)
 	}
 }
 
-int key_hook(int keycode, t_data *data)
+int	key_hook(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)
 		esc_game(data);
@@ -63,6 +63,7 @@ int	esc_game(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
 	ft_printf("You exit game");
+	free_data(data);
 	exit(EXIT_SUCCESS);
 }
 
@@ -70,4 +71,5 @@ void	render_game(t_data *data)
 {
 	background(data);
 	load_map(data);
+	mlx_hook(data->win, 17, 1L << 2, esc_game, data);
 }

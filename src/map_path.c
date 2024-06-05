@@ -6,13 +6,13 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:15:34 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 20:32:07 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:41:59 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	find_player(t_data *data)
+static void	find_player(t_data *data)
 {
 	int	i;
 	int	j;
@@ -40,7 +40,7 @@ void	find_player(t_data *data)
 	}
 }
 
-void	flood_fill_t(t_data *data, int row, int col, char target)
+static void	flood_fill_t(t_data *data, int row, int col, char target)
 {
 	if (row < 0 || row >= (data->y / IMAGE_Y) || col < 0
 		|| col >= (data->x / IMAGE_X))
@@ -55,7 +55,7 @@ void	flood_fill_t(t_data *data, int row, int col, char target)
 	flood_fill_t(data, row, col + 1, target);
 }
 
-void	flood_fill(t_data *data, int row, int col, char target)
+static void	flood_fill(t_data *data, int row, int col, char target)
 {
 	if (row < 0 || row >= (data->y / IMAGE_Y) || col < 0
 		|| col >= (data->x / IMAGE_X))
@@ -71,7 +71,7 @@ void	flood_fill(t_data *data, int row, int col, char target)
 	flood_fill(data, row, col + 1, target);
 }
 
-void	check_new_map(t_data *data, char c)
+static void	check_new_map(t_data *data, char c)
 {
 	int	i;
 	int	j;
@@ -108,4 +108,5 @@ void	map_path(t_data *data)
 	c = 'E';
 	flood_fill_t(data, data->player_x, data->player_y, target);
 	check_new_map(data, c);
+	free_data(data);
 }

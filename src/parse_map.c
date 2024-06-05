@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 17:06:25 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/03 20:42:28 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:45:16 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	map_check(t_data *data)
 		ft_error("Error\nMap has to contain at least one collectible");
 }
 
-void	wall_check(t_data *data)
+static void	wall_check(t_data *data)
 {
 	int	x;
 	int	y;

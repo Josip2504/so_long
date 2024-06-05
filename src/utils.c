@@ -6,21 +6,11 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:06:28 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 20:08:57 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:43:55 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	free_array(char **s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		free(s[i++]);
-	free(s);
-}
 
 int	counter(char *str, char c)
 {
@@ -37,4 +27,26 @@ int	counter(char *str, char c)
 			count++;
 	}
 	return (count);
+}
+
+void	free_data(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	if (data->map->map)
+	{
+		while (data->map->map[i])
+		{
+			free(data->map->map[i]);
+			i++;
+		}
+		free(data->map->map);
+	}
+}
+
+void	ft_error(char *str)
+{
+	ft_printf("%s\n", str);
+	exit(EXIT_FAILURE);
 }
