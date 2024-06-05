@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:06:28 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/04 15:59:27 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 20:08:57 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,4 @@ int	counter(char *str, char c)
 			count++;
 	}
 	return (count);
-}
-int	close_win()
-{
-	exit(0);
-}
-
-int		keypress(int keycode)
-{
-	if (keycode == KEY_ESC)
-		exit(0);
-	return (0);
 }

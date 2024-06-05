@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 01:51:24 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 20:09:02 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ void	render_game(t_data *data);
 // utils
 void	free_array(char **s);
 int		counter(char *str, char c);
-int		close_win();
-int		keypress(int keycode);
 
 // map_path
 void	map_path(t_data *data);
