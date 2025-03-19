@@ -2,6 +2,8 @@
 
 so_long is a 42 school project to create a simple 2D game built using MiniLibX, a lightweight graphical library. This project focuses on fundamental computer graphics concepts such as window management, textures, sprites, event handling, and basic game mechanics. It serves as a practical exercise in C programming, improving problem-solving skills while working with graphical elements. The game requires finding and implementing quality assets like tiles and sprites while respecting copyright guidelines..
 
+![Game Screenshot](pic/pic.png)
+
 ## Status
 
 Passed 100%
